@@ -6,6 +6,7 @@
   "description": "A watch face for displaying Biel Mean Time.",
   "icon": "app.png",
   "tags": "",
+  "type": "clock",
   "supports": ["BANGLEJS2"],
   "readme": "README.md",
   "storage": [
