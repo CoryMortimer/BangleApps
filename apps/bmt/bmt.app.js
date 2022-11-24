@@ -92,6 +92,16 @@ Bangle.on("lock", (locked) => {
   currentTimeout = undefined;
   if (!locked) {
     calculateNextTick();
+  } else {
+    const difference = 1 - (calculateBeat() % 1);
+    const seconds = difference / 0.011574;
+    const milliseconds = Math.floor(seconds * 1000);
+    currentTimeout = setTimeout(() => {
+      drawTime(calculateBeat());
+      currentInterval = setInterval(() => {
+        drawTime(calculateBeat());
+      }, 86400);
+    }, milliseconds);
   }
 });
 
