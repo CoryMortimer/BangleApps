@@ -85,12 +85,12 @@ const calculateNextTick = () => {
 g.clear();
 calculateNextTick();
 
-Bangle.on("lcdPower", (on) => {
+Bangle.on("lock", (locked) => {
   if (currentInterval) clearInterval(currentInterval);
   if (currentTimeout) clearTimeout(currentTimeout);
   currentInterval = undefined;
   currentTimeout = undefined;
-  if (on) {
+  if (!locked) {
     calculateNextTick();
   }
 });
