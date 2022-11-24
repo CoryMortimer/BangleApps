@@ -8,6 +8,7 @@ const X = 115,
 let previousBeat;
 let previousDecibeat;
 let currentInterval;
+let currentTimeout;
 
 const calculateBeat = () => {
   const dateTime = new Date();
@@ -68,7 +69,7 @@ const calculateNextTick = () => {
   if (difference > 0) {
     const seconds = difference / 0.011574;
     const milliseconds = Math.floor(seconds * 1000);
-    setTimeout(() => {
+    currentTimeout = setTimeout(() => {
       drawTime(calculateBeat());
       currentInterval = setInterval(() => {
         drawTime(calculateBeat());
@@ -81,16 +82,18 @@ const calculateNextTick = () => {
   }
 };
 
+g.clear();
+calculateNextTick();
+
 Bangle.on("lcdPower", (on) => {
   if (currentInterval) clearInterval(currentInterval);
+  if (currentTimeout) clearTimeout(currentTimeout);
   currentInterval = undefined;
+  currentTimeout = undefined;
   if (on) {
     calculateNextTick();
   }
 });
-
-g.clear();
-calculateNextTick();
 
 /* Show launcher when middle button pressed
 This should be done *before* Bangle.loadWidgets so that
