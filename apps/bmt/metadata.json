@@ -1,5 +1,5 @@
 {
-  "id": "BMT",
+  "id": "bmt",
   "name": "Biel Mean Time",
   "shortName": "BMT",
   "version": "0.01",
@@ -9,7 +9,7 @@
   "supports": ["BANGLEJS2"],
   "readme": "README.md",
   "storage": [
-    { "name": "biel_mean_time.app.js", "url": "biel_mean_time.app.js" },
-    { "name": "biel_mean_time.img", "url": "app-icon.js", "evaluate": true }
+    { "name": "bmt.app.js", "url": "bmt.app.js" },
+    { "name": "bmt.img", "url": "app-icon.js", "evaluate": true }
   ]
 }
